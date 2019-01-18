@@ -10,6 +10,24 @@ class Es6lessonPage1 extends Component {
 
   static defaultProps = {};
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      'counter' : 0
+    }
+  }
+
+  handleClick = (event) => {
+    console.log('handleClick : ', event);
+
+    this.setState(
+      { 'counter' : ++this.state.counter }, ()=> {
+        console.log('this.state.counter : ', this.state.counter);
+      }
+
+    )
+  }
+
   render() {
     return (
       <>
@@ -28,6 +46,15 @@ class Es6lessonPage1 extends Component {
         <p>
           <a href="https://www.naver.com">a 링크 scss 테스트</a>
         </p>
+
+        <div>
+          <button 
+            onClick={this.handleClick}
+            className="btn btn-primary">
+            Don't click me {this.state.counter} times!
+          </button>
+        </div>
+
       </>
     )
   }
